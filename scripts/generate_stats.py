@@ -21,14 +21,23 @@ USER = os.environ.get("GH_USER", "keitaflora01")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "stats")
 
-# Brand tokens (dark navy card, used on both GitHub themes like the project cards)
-BG0, BG1 = "#0B2348", "#173D70"
-INK, INK2, MUTED = "#FFFFFF", "#D7E3F4", "#9FB3CF"
-ACCENT = "#8FD3B0"
-BAR = "#3FAE6E"
-NEUTRAL = "#5B6F8C"
-# Sequential (one hue, dim -> bright on the dark surface): level 0..4
-HEAT = ["#2A4C7F", "#1B5E45", "#23824F", "#3FAE6E", "#7FDCA4"]
+# Brand tokens per theme. "dark" -> <name>.svg, "light" -> <name>-light.svg (README picks via <picture>).
+# HEAT is sequential, one hue: level 0 (none) -> 4 (most); the most active cell is the most prominent.
+THEMES = {
+    "dark": dict(BG0="#0B2348", BG1="#173D70", INK="#FFFFFF", INK2="#D7E3F4", MUTED="#9FB3CF", ACCENT="#8FD3B0",
+                 BAR="#3FAE6E", NEUTRAL="#5B6F8C", SURF="#FFFFFF", BORDER=None,
+                 HEAT=["#2A4C7F", "#1B5E45", "#23824F", "#3FAE6E", "#7FDCA4"]),
+    "light": dict(BG0="#FFFFFF", BG1="#EEF5F1", INK="#0B2348", INK2="#2F4565", MUTED="#5A6B85", ACCENT="#1F7A4A",
+                  BAR="#278653", NEUTRAL="#A3B1C4", SURF="#0B2348", BORDER="#D6E0EA",
+                  HEAT=["#E4EAF1", "#BFE3CF", "#7CC29C", "#3A9A66", "#1E6B45"]),
+}
+
+
+def set_theme(name):
+    globals().update(THEMES[name])
+
+
+set_theme("dark")
 FONT = "'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif"
 
 
@@ -100,17 +109,19 @@ def esc(s):
 
 
 def card(w, h, label, body):
+    border = f'<rect x=".5" y=".5" width="{w-1}" height="{h-1}" rx="16" fill="none" stroke="{BORDER}"/>' if BORDER else ''
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="{esc(label)}">
 <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{BG0}"/><stop offset="1" stop-color="{BG1}"/></linearGradient>
 <clipPath id="c"><rect width="{w}" height="{h}" rx="16"/></clipPath></defs>
 <style>text{{font-family:{FONT}}}</style>
 <g clip-path="url(#c)"><rect width="{w}" height="{h}" fill="url(#bg)"/><rect width="6" height="{h}" fill="#278653"/></g>
 {body}
+{border}
 </svg>'''
 
 
 def kpi(x, y, w, value, label):
-    return (f'<rect x="{x}" y="{y}" width="{w}" height="78" rx="12" fill="#FFFFFF" fill-opacity=".06" stroke="#FFFFFF" stroke-opacity=".12"/>'
+    return (f'<rect x="{x}" y="{y}" width="{w}" height="78" rx="12" fill="{SURF}" fill-opacity=".05" stroke="{SURF}" stroke-opacity=".12"/>'
             f'<text x="{x+18}" y="{y+40}" font-size="28" font-weight="800" fill="{INK}">{esc(value)}</text>'
             f'<text x="{x+18}" y="{y+62}" font-size="12.5" fill="{MUTED}">{esc(label)}</text>')
 
@@ -206,7 +217,7 @@ def contrib_svg(total, days, lv, asof):
     ch, base = 110, my + 26 + 110
     slot = (w - 72) / len(keys)
     bw = min(44, slot - 10)
-    body += f'<line x1="36" x2="{w-36}" y1="{base}" y2="{base}" stroke="#FFFFFF" stroke-opacity=".18"/>'
+    body += f'<line x1="36" x2="{w-36}" y1="{base}" y2="{base}" stroke="{SURF}" stroke-opacity=".18"/>'
     for i, k in enumerate(keys):
         v = months[k]
         bh = ch * v / mx
@@ -258,12 +269,14 @@ def main():
     repos = get_repos()
     total, days, lv = get_contributions()
     asof = dt.date.today().strftime("%d %b %Y")
-    svg_r, rows = repos_svg(repos, asof)
-    svg_c, c = contrib_svg(total, days, lv, asof)
     os.makedirs(OUT, exist_ok=True)
-    for name, data in (("repositories.svg", svg_r), ("contributions.svg", svg_c)):
-        with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
-            f.write(data)
+    for theme, suffix in (("dark", ""), ("light", "-light")):
+        set_theme(theme)
+        svg_r, rows = repos_svg(repos, asof)
+        svg_c, c = contrib_svg(total, days, lv, asof)
+        for name, data in ((f"repositories{suffix}.svg", svg_r), (f"contributions{suffix}.svg", svg_c)):
+            with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
+                f.write(data)
     with open(os.path.join(ROOT, "STATS.md"), "w", encoding="utf-8") as f:
         f.write(stats_md(repos, rows, c, asof))
     print(f"OK: {len(repos)} repos, {total} contributions, {len(days)} days")

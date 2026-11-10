@@ -13,9 +13,9 @@
 
 | Language | Repositories |
 |:--|--:|
+| Python | 5 |
 | HTML | 4 |
-| Python | 4 |
-| Not detected | 3 |
+| Not detected | 2 |
 | **Total** | **11** |
 
 ## All original public repositories
@@ -26,7 +26,7 @@
 | [Projet_ATS](https://github.com/keitaflora01/Projet_ATS) | Python | 2025-12-15 | 0 |
 | [Essa-construction](https://github.com/keitaflora01/Essa-construction) — project de construction collaboratif | HTML | 2025-10-27 | 0 |
 | [keitaflora01](https://github.com/keitaflora01/keitaflora01) | Not detected | 2025-10-09 | 0 |
-| [readme](https://github.com/keitaflora01/readme) | Not detected | 2025-10-09 | 0 |
+| [readme](https://github.com/keitaflora01/readme) | Python | 2025-10-09 | 0 |
 | [CVGeneratorAI](https://github.com/keitaflora01/CVGeneratorAI) | HTML | 2025-09-06 | 0 |
 | [smartfinance](https://github.com/keitaflora01/smartfinance) | Python | 2025-08-09 | 0 |
 | [profil](https://github.com/keitaflora01/profil) | Python | 2025-07-19 | 0 |
@@ -38,7 +38,7 @@
 
 | Metric | Value |
 |:--|--:|
-| Total contributions | 421 |
+| Total contributions | 423 |
 | Active days | 133 |
 | Longest streak | 28 days |
 | Current streak | 2 days |
@@ -60,4 +60,4 @@
 | 2026-08 | 17 |
 | 2026-09 | 28 |
 | 2026-10 | 61 |
-| 2026-11 | 13 |
+| 2026-11 | 15 |

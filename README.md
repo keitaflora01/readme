@@ -7,7 +7,10 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/banner.svg" alt="Keita Flora — Software Engineer, Backend & Full-Stack Developer, Cameroon. Engineering with purpose. Building solutions that matter." width="100%">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/banner.svg">
+  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/banner-light.svg" alt="Keita Flora — Software Engineer, Backend & Full-Stack Developer, Cameroon. Engineering with purpose. Building solutions that matter." width="100%">
+</picture>
 
 <br>
 
@@ -77,14 +80,23 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
 <div align="center">
 
 <a href="https://github.com/keitaflora01?tab=repositories">
-  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/shield.svg" alt="SHIELD — Digital document security. Verifies the authenticity and integrity of official digital documents. Stack: Python, FastAPI, React, Cryptography." width="49%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/shield.svg">
+    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/shield-light.svg" alt="SHIELD — Digital document security. Verifies the authenticity and integrity of official digital documents. Stack: Python, FastAPI, React, Cryptography." width="49%">
+  </picture>
 </a>
 <a href="https://github.com/keitaflora01?tab=repositories">
-  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/tonafinance.svg" alt="TONAFINANCE — Digital finance. A digital tontine that modernises community savings and personal financial management. Stack: Python, Django, Django Ninja." width="49%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/tonafinance.svg">
+    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/tonafinance-light.svg" alt="TONAFINANCE — Digital finance. A digital tontine that modernises community savings and personal financial management. Stack: Python, Django, Django Ninja." width="49%">
+  </picture>
 </a>
 
 <a href="https://github.com/keitaflora01?tab=repositories">
-  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/business-applications.svg" alt="Business Applications — Web applications that improve business operations, data management and process efficiency. Stack: Python, Django, React." width="49%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/business-applications.svg">
+    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/business-applications-light.svg" alt="Business Applications — Web applications that improve business operations, data management and process efficiency. Stack: Python, Django, React." width="49%">
+  </picture>
 </a>
 
 </div>
@@ -107,7 +119,10 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/tech-marquee.svg" alt="Technologies: Python, JavaScript, Django, Django REST Framework, FastAPI, React, Tailwind CSS, Vite, PostgreSQL, SQLite, Docker, Git, Linux, Postman" width="100%">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/tech-marquee.svg">
+  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/tech-marquee-light.svg" alt="Technologies: Python, JavaScript, Django, Django REST Framework, FastAPI, React, Tailwind CSS, Vite, PostgreSQL, SQLite, Docker, Git, Linux, Postman" width="100%">
+</picture>
 
 <br><br>
 
@@ -149,13 +164,19 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
 <div align="center">
 
 <a href="https://github.com/keitaflora01/readme/blob/main/STATS.md">
-  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/contributions.svg" alt="Total contributions over the last 12 months, with contribution calendar, streaks and monthly totals. Open for the text snapshot." width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/contributions.svg">
+    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/contributions-light.svg" alt="Total contributions over the last 12 months, with contribution calendar, streaks and monthly totals. Open for the text snapshot." width="100%">
+  </picture>
 </a>
 
 <br><br>
 
 <a href="https://github.com/keitaflora01/readme/blob/main/STATS.md">
-  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/repositories.svg" alt="Dated dashboard of original public repository counts and primary languages. Forks excluded. Language bars count repositories, not proficiency. Open for the text snapshot and definitions." width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/repositories.svg">
+    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/repositories-light.svg" alt="Dated dashboard of original public repository counts and primary languages. Forks excluded. Language bars count repositories, not proficiency. Open for the text snapshot and definitions." width="100%">
+  </picture>
 </a>
 
 <sub><a href="https://github.com/keitaflora01/readme/blob/main/STATS.md">Snapshot &amp; definitions</a> &nbsp;·&nbsp; <a href="https://github.com/keitaflora01?tab=repositories">All repositories</a> &nbsp;·&nbsp; <em>updated daily</em></sub>
