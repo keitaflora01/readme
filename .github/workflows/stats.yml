@@ -1,4 +1,4 @@
-# Régénère chaque jour les tableaux de bord (assets/stats/*.svg) et STATS.md.
+# Met à jour chaque jour la carte « GitHub at a glance » (total de commits et de dépôts) et STATS.md.
 # Lancement manuel possible : onglet Actions > "Update profile stats" > Run workflow.
 name: Update profile stats
 
