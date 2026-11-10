@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 6" width="1000" height="6" role="img" aria-label="Divider">
+<defs>
+<linearGradient id="line" x1="0" x2="1"><stop offset="0" stop-color="#173D70" stop-opacity="0"/><stop offset=".25" stop-color="#173D70" stop-opacity=".55"/><stop offset=".75" stop-color="#278653" stop-opacity=".55"/><stop offset="1" stop-color="#278653" stop-opacity="0"/></linearGradient>
+<linearGradient id="glow" x1="0" x2="1"><stop offset="0" stop-color="#278653" stop-opacity="0"/><stop offset=".5" stop-color="#6FD3A2"/><stop offset="1" stop-color="#278653" stop-opacity="0"/></linearGradient>
+</defs>
+<style>.g{animation:sweep 7s ease-in-out infinite}@keyframes sweep{from{transform:translateX(-180px)}to{transform:translateX(1000px)}}@media (prefers-reduced-motion:reduce){.g{animation:none;transform:translateX(410px)}}</style>
+<rect x="0" y="2" width="1000" height="2" rx="1" fill="url(#line)"/>
+<rect class="g" x="0" y="1.5" width="180" height="3" rx="1.5" fill="url(#glow)"/>
+</svg>
