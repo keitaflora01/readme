@@ -140,6 +140,28 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
 
 <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/divider.svg" alt="" width="100%">
 
+</div>
+
+<!-- ═════════════════════════ 5. GITHUB ACTIVITY ═════════════════════════ -->
+
+<h2 align="center">GitHub Activity</h2>
+
+<div align="center">
+
+<a href="https://github.com/keitaflora01/readme/blob/main/STATS.md">
+  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/contributions.svg" alt="Total contributions over the last 12 months, with contribution calendar, streaks and monthly totals. Open for the text snapshot." width="100%">
+</a>
+
+<br><br>
+
+<a href="https://github.com/keitaflora01/readme/blob/main/STATS.md">
+  <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/repositories.svg" alt="Dated dashboard of original public repository counts and primary languages. Forks excluded. Language bars count repositories, not proficiency. Open for the text snapshot and definitions." width="100%">
+</a>
+
+<sub><a href="https://github.com/keitaflora01/readme/blob/main/STATS.md">Snapshot &amp; definitions</a> &nbsp;·&nbsp; <a href="https://github.com/keitaflora01?tab=repositories">All repositories</a> &nbsp;·&nbsp; <em>updated daily</em></sub>
+
+<img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/divider.svg" alt="" width="100%">
+
 <h3>Have an idea worth building?</h3>
 
 <em>Let's discuss the challenge, explore the possibilities and engineer something meaningful.</em>
