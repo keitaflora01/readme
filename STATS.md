@@ -1,15 +1,15 @@
 # GitHub at a glance — keitaflora01
 
-*As of 10 Nov 2026. Updated daily by [`.github/workflows/stats.yml`](.github/workflows/stats.yml).*
+*As of 11 Nov 2026. Updated daily by [`.github/workflows/stats.yml`](.github/workflows/stats.yml).*
 
 | Metric | Value |
 |:--|--:|
-| Total commits | 147 |
+| Total commits | 146 |
 | Total repositories | 11 |
 
 ## Definitions
 
-- **Total commits**: commits authored by the account in public repositories, as counted by GitHub commit search.
+- **Total commits**: every commit GitHub counts as a contribution since the account was created (2025-05-12), in any repository (the account's own and other people's). Private repositories are included when the workflow runs with the `PROFILE_TOKEN` secret.
 - **Total repositories**: public repositories owned by the account, forks excluded.
 
 ## Repositories
