@@ -46,7 +46,7 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
   </tr>
   <tr>
     <td>🎯 <b>Focus</b></td>
-    <td>Backend architecture · REST APIs · Full-stack web applications</td>
+    <td>Backend architecture · REST APIs · Full-stack web &amp; mobile applications</td>
   </tr>
   <tr>
     <td>🚀 <b>Currently building</b></td>
@@ -65,6 +65,7 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
 - **Foundations** — Started with web fundamentals (HTML, CSS, JavaScript) and Python, building small tools and websites.
 - **Backend engineering** — Specialised in Django, Django REST Framework and FastAPI: data modelling, authentication, API design and testing.
 - **Full-stack development** — Added React, Tailwind CSS and Vite to ship complete products, from the API to the user interface.
+- **Shipping to production** — Deployed my own products and client applications on VPS servers (including AWS), Hostinger, Vercel and Render, and published KT Finance on Google Play.
 - **Today** — Designing platforms that solve concrete problems: document security, digital finance and business management, with Docker-based, reproducible workflows.
 
 <div align="center">
@@ -88,10 +89,16 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
 <a href="https://github.com/keitaflora01?tab=repositories">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/tonafinance.svg">
-    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/tonafinance-light.svg" alt="TONAFINANCE — Digital finance. A digital tontine that modernises community savings and personal financial management. Stack: Python, Django, Django Ninja." width="49%">
+    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/tonafinance-light.svg" alt="TONAFINANCE — Digital finance. A digital tontine that modernises community savings and personal financial management, with payment methods integrated through its API, deployed on a VPS. Stack: Python, Django REST Framework." width="49%">
   </picture>
 </a>
 
+<a href="https://keita-dev.vercel.app/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/kt-finance.svg">
+    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/kt-finance-light.svg" alt="KT FINANCE — Mobile financial management app, published on Google Play. Stack: React Native, Expo, Django REST Framework, PostgreSQL." width="49%">
+  </picture>
+</a>
 <a href="https://github.com/keitaflora01?tab=repositories">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/projects/business-applications.svg">
@@ -106,7 +113,8 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
 | Project | Objective | Stack | Repository |
 |:--|:--|:--|:--:|
 | **🛡️ SHIELD** | Verify the authenticity and integrity of official digital documents | Python · FastAPI · React · Cryptography | [View →](https://github.com/keitaflora01?tab=repositories) |
-| **💰 TONAFINANCE** | Digitise community savings (tontines) and simplify personal finance | Python · Django · Django Ninja | [View →](https://github.com/keitaflora01?tab=repositories) |
+| **💰 TONAFINANCE** | Digitise community savings (tontines) and simplify personal finance, with payment methods integrated through the API | Python · Django REST Framework · Payment APIs · VPS | [View →](https://github.com/keitaflora01?tab=repositories) |
+| **📱 KT FINANCE** | Mobile financial management app, published on Google Play | React Native · Expo · Django REST Framework · PostgreSQL | Google Play |
 | **🏢 Business Apps** | Improve business operations, data management and process efficiency | Python · Django · React | [View →](https://github.com/keitaflora01?tab=repositories) |
 
 <div align="center">
@@ -140,6 +148,10 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
     <td><img src="https://skillicons.dev/icons?i=react,tailwind,vite" alt="React, Tailwind CSS, Vite" height="44"></td>
   </tr>
   <tr>
+    <td align="center"><b>Mobile</b></td>
+    <td><img src="https://img.shields.io/badge/React%20Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React Native"> <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white" alt="Expo"></td>
+  </tr>
+  <tr>
     <td align="center"><b>Databases</b></td>
     <td><img src="https://skillicons.dev/icons?i=postgres,sqlite" alt="PostgreSQL, SQLite" height="44"></td>
   </tr>
@@ -149,7 +161,12 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
   </tr>
   <tr>
     <td align="center"><b>Deployment</b></td>
-    <td><img src="https://skillicons.dev/icons?i=vercel" alt="Vercel" height="44"><br><sub>Vercel · Render</sub></td>
+    <td><img src="https://skillicons.dev/icons?i=aws,vercel" alt="AWS, Vercel" height="44"><br>
+      <img src="https://img.shields.io/badge/Hostinger-673DE6?style=flat-square&logo=hostinger&logoColor=white" alt="Hostinger">
+      <img src="https://img.shields.io/badge/VPS-0B2348?style=flat-square&logo=linux&logoColor=white" alt="VPS">
+      <img src="https://img.shields.io/badge/Render-000000?style=flat-square&logo=render&logoColor=white" alt="Render">
+      <img src="https://img.shields.io/badge/Google%20Play-278653?style=flat-square&logo=googleplay&logoColor=white" alt="Google Play">
+      <br><sub>Personal products &amp; client applications in production</sub></td>
   </tr>
 </table>
 
@@ -166,7 +183,7 @@ I'm a **software engineer based in Cameroon**, specialised in **backend engineer
 <a href="https://github.com/keitaflora01?tab=repositories">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/summary.svg">
-    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/summary-light.svg" alt="Total commits and total public repositories (forks excluded), updated daily." width="100%">
+    <img src="https://raw.githubusercontent.com/keitaflora01/readme/main/assets/stats/summary-light.svg" alt="Total commits and public repositories, updated daily." width="100%">
   </picture>
 </a>
 

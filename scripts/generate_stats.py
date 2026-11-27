@@ -6,8 +6,10 @@ Standard library only. Set GITHUB_TOKEN to raise the API rate limit (automatic i
 On any error the script exits without touching the existing files.
 
 Definitions
-  - Total commits: all-time commits GitHub counts as contributions, in any repository
-    (GraphQL contributionsCollection.totalCommitContributions, summed per year since account creation).
+  - Total commits: all-time commits authored by the account. With a personal token (secret PROFILE_TOKEN),
+    every branch of every repository the account can access is scanned (own, collaborator, organisation,
+    private, forks) and commits are de-duplicated by SHA. Public commit search is added to that set.
+    The GitHub contributions total is used instead when it is higher (e.g. access since removed).
   - Total repositories: public repositories owned by the account, forks excluded.
 """
 import datetime as dt
@@ -15,11 +17,14 @@ import html
 import json
 import os
 import sys
+import urllib.error
+import urllib.parse
 import urllib.request
 
 USER = os.environ.get("GH_USER", "keitaflora01")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "assets", "stats")
+HAS_PROFILE_TOKEN = os.environ.get("HAS_PROFILE_TOKEN") == "true"
 FONT = "'Segoe UI',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif"
 
 THEMES = {
@@ -83,6 +88,48 @@ def get_commit_total():
     return total, created[:10]
 
 
+def paginate(path):
+    page, sep = 1, "&" if "?" in path else "?"
+    while True:
+        batch = api(f"{path}{sep}per_page=100&page={page}")
+        yield from batch
+        if len(batch) < 100:
+            return
+        page += 1
+
+
+def scan_accessible_repos():
+    """SHAs of the user's commits on every branch of every repository the personal token can access.
+
+    Never print repository or branch names here: the Actions logs of a public repository are public.
+    """
+    shas, skipped = set(), 0
+    for repo in paginate("/user/repos?affiliation=owner,collaborator,organization_member"):
+        base = f"/repos/{repo['full_name']}"
+        try:
+            for branch in paginate(f"{base}/branches"):
+                query = urllib.parse.urlencode({"sha": branch["commit"]["sha"], "author": USER})
+                shas.update(c["sha"] for c in paginate(f"{base}/commits?{query}"))
+        except urllib.error.HTTPError as e:
+            # 409 = empty repository, 404/451 = unavailable. Anything else (rate limit, SSO...) must not go unnoticed.
+            if e.code not in (404, 409, 451):
+                raise RuntimeError(f"HTTP {e.code} while scanning a repository") from None
+            skipped += 1
+    print(f"Scan done: {len(shas)} unique commits, {skipped} repositories empty or unavailable")
+    return shas
+
+
+def search_public_commits():
+    """SHAs found by public commit search (first 1000 results at most, GitHub's limit)."""
+    shas = set()
+    for page in range(1, 11):
+        items = api(f"/search/commits?q=author:{USER}&per_page=100&page={page}")["items"]
+        shas.update(c["sha"] for c in items)
+        if len(items) < 100:
+            break
+    return shas
+
+
 # Simple 24x24 glyphs drawn in the icon colour
 COMMIT_ICON = ('<line x1="2" y1="12" x2="7.5" y2="12" stroke="{c}" stroke-width="2.4" stroke-linecap="round"/>'
                '<line x1="16.5" y1="12" x2="22" y2="12" stroke="{c}" stroke-width="2.4" stroke-linecap="round"/>'
@@ -113,7 +160,7 @@ def summary_svg(commits, repos, asof, t, since):
 <g clip-path="url(#c)"><rect width="{w}" height="{h}" fill="url(#bg)"/><rect width="6" height="{h}" fill="#278653"/></g>
 <text x="36" y="44" font-size="12" font-weight="700" letter-spacing="2" fill="{t["accent"]}">GITHUB AT A GLANCE</text>
 <text x="{w-36}" y="44" text-anchor="end" font-size="12.5" fill="{t["muted"]}">As of {asof}</text>
-{tile(36, ty, tw, th, t, COMMIT_ICON, commits, "Total commits", "all repositories · since " + dt.date.fromisoformat(since).strftime("%b %Y"))}
+{tile(36, ty, tw, th, t, COMMIT_ICON, commits, "Total commits", ("all repositories · since " if HAS_PROFILE_TOKEN else "public activity · since ") + dt.date.fromisoformat(since).strftime("%b %Y"))}
 {tile(36 + tw + 24, ty, tw, th, t, REPO_ICON, repos, "Total repositories", "public · forks excluded")}
 {border}
 </svg>'''
@@ -121,7 +168,14 @@ def summary_svg(commits, repos, asof, t, since):
 
 def main():
     repos = get_repos()
-    commits, since = get_commit_total()
+    contributions, since = get_commit_total()
+    shas = search_public_commits()
+    if HAS_PROFILE_TOKEN:
+        shas |= scan_accessible_repos()
+    commits = max(contributions, len(shas))
+    print(f"Contributions: {contributions} | unique commits found: {len(shas)}")
+    if not HAS_PROFILE_TOKEN:
+        print("WARNING: PROFILE_TOKEN is not set, private repositories and unmerged branches are not scanned")
     asof = dt.date.today().strftime("%d %b %Y")
     os.makedirs(OUT, exist_ok=True)
     for theme, suffix in (("dark", ""), ("light", "-light")):
@@ -131,9 +185,10 @@ def main():
              "[`.github/workflows/stats.yml`](.github/workflows/stats.yml).*", "",
              "| Metric | Value |", "|:--|--:|", f"| Total commits | {commits:,} |", f"| Total repositories | {len(repos)} |", "",
              "## Definitions", "",
-             f"- **Total commits**: every commit GitHub counts as a contribution since the account was created ({since}), "
-             "in any repository (the account's own and other people's). Private repositories are included when the "
-             "workflow runs with the `PROFILE_TOKEN` secret.",
+             f"- **Total commits**: commits authored by the account (account created {since}). "
+             + ("All branches of every accessible repository (own and others, public and private) are scanned, "
+                "without counting the same commit twice." if HAS_PROFILE_TOKEN else
+                "Public activity only: add the `PROFILE_TOKEN` secret to scan private repositories and all branches."),
              "- **Total repositories**: public repositories owned by the account, forks excluded.", "",
              "## Repositories", "", "| Repository | Created |", "|:--|:--|"]
     lines += [f"| [{r['name']}]({r['html_url']}) | {r['created_at'][:10]} |"
